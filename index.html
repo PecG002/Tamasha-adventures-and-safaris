@@ -1,1 +1,166 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tamasha Adventure & Safaris</title><link rel="stylesheet" href="style.css"></head><body data-page="home"><header class="header" id="header"><div class="container nav"><a href="index.html"><img class="logo" src="assets/logo.jpg" alt="Tamasha Adventure & Safaris"></a><button class="menu" id="menu">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-page="home">Home</a><a href="about.html" data-page="about">About Us</a><a href="events.html" data-page="events">Events</a><a href="private.html" data-page="private">Private Guide</a><a href="contact.html" data-page="contact">Contact</a><a class="pill" href="contact.html">Book a Trip</a></nav></div></header><main><section class="hero"><div class="hero-bg"></div><div class="container hero-content"><p class="kicker">TAMASHA ADVENTURE & SAFARIS</p><h1>Go somewhere<br><em>worth remembering.</em></h1><p>Curated Kenyan escapes, group adventures and private journeys designed around how you want to travel.</p><div class="actions"><a class="btn primary" href="events.html">Explore upcoming trips</a><a class="btn ghost" data-wa href="#">Talk to a guide</a></div></div><div class="float"><small>NEXT ADVENTURE</small><b>Olkaria & Lake Naivasha</b><span>6th September 2026 • From KSh 2,800</span></div></section><section class="intro"><div class="container grid2"><div><p class="kicker">TRAVEL, THE TAMASHA WAY</p><h2 class="display">Kenya is not a checklist.<br>It's a <em>feeling.</em></h2></div><div><p class="copy">We plan the details so you can focus on the views, the people, the stories and the moments you didn't know you needed. Join a group adventure or let us build a private journey around you.</p><div class="stats"><div class="stat"><b>01</b><span>Group adventures</span></div><div class="stat"><b>02</b><span>Private journeys</span></div><div class="stat"><b>03</b><span>Local experiences</span></div></div></div></div></section><section class="section"><div class="container"><div class="head"><div><p class="kicker">UPCOMING</p><h2>Where are we going next?</h2></div><p>Pick a ready-made adventure, bring your friends, and let Tamasha handle the journey.</p></div><div class="cards" id="eventsHome"></div></div></section><section class="section dark"><div class="container grid2"><div class="featureimg"><img src="assets/hero-waterfall.jpg" alt="Waterfall adventure"></div><div><p class="kicker">GO YOUR OWN WAY</p><h2 class="display">One trip.<br><em>Just for you.</em></h2><p class="copy">Want a birthday escape, couples' getaway, family day out, solo adventure or a private group? Tell us where you want to go and we become your guide.</p><a class="btn primary" href="private.html">Plan a private journey</a></div></div></section></main><footer class="footer"><div class="container footgrid"><div><img class="footerlogo" src="assets/logo.jpg" alt="Tamasha"><p>Experience Africa, Discover the Wild.</p></div><div><h3>EXPLORE</h3><a href="about.html">About Us</a><a href="events.html">Upcoming Events</a><a href="private.html">Private Guide</a></div><div><h3>CONTACT</h3><a id="fp" href="#">+254 743 403 920</a><a href="contact.html">Plan your trip →</a></div></div><div class="container copyr">© <span id="year"></span> Tamasha Adventure & Safaris. All rights reserved.</div></footer><script src="content.js"></script><script>(function(){const d=JSON.parse(localStorage.getItem("tamashaContent")||JSON.stringify(window.TAMASHA_CONTENT)),b=d.business,ph=b.phone.replace(/\D/g,"");document.getElementById("year")&&(document.getElementById("year").textContent=new Date().getFullYear());const fp=document.getElementById("fp");if(fp){fp.textContent=b.phone;fp.href="tel:"+ph}const h=document.getElementById("header");addEventListener("scroll",()=>h.classList.toggle("scrolled",scrollY>30));const m=document.getElementById("menu"),n=document.getElementById("navlinks");m.onclick=()=>n.classList.toggle("open");document.querySelectorAll("[data-wa]").forEach(a=>a.href="https://wa.me/"+ph+"?text="+encodeURIComponent("Hello Tamasha Adventure & Safaris, I would like to plan/book a trip."));document.querySelectorAll(".navlinks a[data-page]").forEach(a=>{if(a.dataset.page===document.body.dataset.page)a.classList.add("active")});function card(t){return `<article class="card"><div class="cardimg"><img src="${t.image}" alt="${t.title}"><div class="date">${t.date}</div></div><div class="cardbody"><p class="kicker">UPCOMING ADVENTURE</p><h3>${t.title}</h3><p>${t.intro}</p><div class="price">${t.price}</div><div class="cols"><div><h4>Inclusive</h4><ul>${t.included.map(x=>`<li>${x}</li>`).join("")}</ul></div><div><h4>Optional extras</h4><ul>${t.extras.length?t.extras.map(x=>`<li>${x}</li>`).join(""):"<li>Ask us about custom options.</li>"}</ul></div></div><a class="btn primary" data-wa href="#">Book this trip</a></div></article>`}const hg=document.getElementById("eventsHome"),eg=document.getElementById("eventsGrid");if(hg)hg.innerHTML=d.trips.map(card).join("");if(eg)eg.innerHTML=d.trips.map(card).join("");const pb=document.getElementById("privateBenefits");if(pb)pb.innerHTML=d.private.benefits.map(x=>`<div class="benefit"><b>${x}</b><span>Built into your private journey.</span></div>`).join("");const cp=document.getElementById("contactPhone"),ct=document.getElementById("contactTikTok");if(cp){cp.textContent=b.phone;cp.href="tel:"+ph}if(ct){ct.textContent=b.tiktok;ct.href="https://www.tiktok.com/@"+b.tiktok.replace("@","")}const f=document.getElementById("bookingForm");if(f)f.onsubmit=e=>{e.preventDefault();const n=document.getElementById("nm").value,t=document.getElementById("tp").value,ds=document.getElementById("ds").value,msg=document.getElementById("ms").value;location.href="https://wa.me/"+ph+"?text="+encodeURIComponent(`Hello Tamasha Adventure & Safaris.\n\nName: ${n}\nTrip type: ${t}\nDestination: ${ds}\nMessage: ${msg}`)};})();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d2b1b">
+  <meta name="description" content="Tamasha Adventure & Safaris — curated Kenyan escapes, group adventures and private journeys.">
+  <title>Home | Tamasha Adventure & Safaris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Tamasha Adventure & Safaris home">
+      <img src="assets/logo.jpg" alt="Tamasha Adventure & Safaris">
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links"><a href="index.html" class="active" data-page="home">Home</a><a href="about.html" class="" data-page="about">Our story</a><a href="events.html" class="" data-page="events">Adventures</a><a href="private.html" class="" data-page="private">Private journeys</a><a href="contact.html" class="" data-page="contact">Contact</a><a class="nav-cta" href="contact.html">Plan a trip</a></nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow hero-kicker">Tamasha Adventure & Safaris</p>
+        <h1>Go somewhere<br><em>worth remembering.</em></h1>
+        <p class="hero-lede">Curated Kenyan escapes, group adventures and private journeys — planned around how you actually want to travel.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="events.html">Explore adventures</a>
+          <a class="btn btn-outline" data-wa data-wa-message="Hello Tamasha Adventure & Safaris. I want to talk to a guide about planning a trip.">Talk to a guide</a>
+        </div>
+        <div class="hero-meta">
+          <strong>KENYA, YOUR WAY</strong>
+          <span>Ready-made adventures or a journey built around you.</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card" data-next-trip></div>
+  </section>
+
+  <section class="value-strip">
+    <div class="container value-grid">
+      <div class="value-item"><strong>Group adventures</strong><span>Ready-made trips with clear pricing.</span></div>
+      <div class="value-item"><strong>Private journeys</strong><span>Built around your dates and people.</span></div>
+      <div class="value-item"><strong>Local planning</strong><span>Kenyan experiences without the guesswork.</span></div>
+      <div class="value-item"><strong>Easy booking</strong><span>Talk to the team directly on WhatsApp.</span></div>
+    </div>
+  </section>
+
+  <section class="section section-white intro">
+    <div class="container intro-grid">
+      <div class="reveal">
+        <p class="eyebrow">Travel, the Tamasha way</p>
+        <h2>Kenya is not a checklist.<br>It's a <em>feeling.</em></h2>
+      </div>
+      <div class="reveal">
+        <p class="intro-copy">We plan the details so you can focus on the views, the people, the stories and the moments you didn't know you needed.</p>
+        <div class="numbered">
+          <div class="numbered-row"><b>01</b><div><strong>Pick an adventure</strong><span>Choose a scheduled trip and see exactly what's included.</span></div></div>
+          <div class="numbered-row"><b>02</b><div><strong>Bring your people</strong><span>Friends, family, colleagues or a group looking for a day away.</span></div></div>
+          <div class="numbered-row"><b>03</b><div><strong>Make it yours</strong><span>For a private journey, we shape the experience around you.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-paper" id="adventures">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">Upcoming</p><h2>Where are we going next?</h2></div>
+        <p>Ready-made adventures for travellers who want the experience without doing all the planning. Pricing and inclusions are shown up front.</p>
+      </div>
+      <div class="trip-grid" data-trips></div>
+    </div>
+  </section>
+
+  <section class="section section-paper">
+    <div class="container editorial reveal">
+      <div class="editorial-media"><img src="assets/hero-waterfall.jpg" alt="Waterfall surrounded by green forest" loading="lazy"></div>
+      <div class="editorial-copy">
+        <p class="eyebrow">Go your own way</p>
+        <h2>One trip.<br><em>Just for you.</em></h2>
+        <p>Birthday escape, couples' getaway, family day out, solo adventure or a private group — tell us where you want to go and we become your guide.</p>
+        <div class="check-list">
+          <div>Your destination</div><div>Your dates</div>
+          <div>Your people</div><div>Your pace</div>
+        </div>
+        <div><a class="btn btn-primary" href="private.html">Build a private journey</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">Simple from the start</p><h2>From idea to adventure.</h2></div>
+        <p class="muted">A clear process keeps the exciting part — the travel — bigger than the logistics.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card reveal"><span class="num">01 / DISCOVER</span><h3>Tell us what you want</h3><p>Share your destination, dates, group and the kind of day or trip you have in mind.</p></div>
+        <div class="process-card reveal"><span class="num">02 / PLAN</span><h3>We shape the journey</h3><p>We help turn the idea into a practical itinerary, with transport, activities and key details.</p></div>
+        <div class="process-card reveal"><span class="num">03 / GO</span><h3>Show up and enjoy Kenya</h3><p>Once the details are sorted, you can focus on the people, places and memories.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-head reveal"><div><p class="eyebrow">Good to know</p><h2>Questions travellers ask.</h2></div><p>Keep the important answers close to the booking decision.</p></div>
+      <div class="faq-list">
+        <div class="faq"><button aria-expanded="false"><span>How do I book an upcoming trip?</span><span data-plus>+</span></button><div class="faq-answer"><div><p>Choose your trip, tap “Book this trip” and WhatsApp the Tamasha team. They can confirm availability and guide you through the next step.</p></div></div></div>
+        <div class="faq"><button aria-expanded="false"><span>Can Tamasha plan a private trip?</span><span data-plus>+</span></button><div class="faq-answer"><div><p>Yes. Private journeys can be shaped around your destination, dates, people and preferred style of adventure. Start with the private journeys page or WhatsApp the team.</p></div></div></div>
+        <div class="faq"><button aria-expanded="false"><span>How can I pay?</span><span data-plus>+</span></button><div class="faq-answer"><div><p>The current site lists an M-Pesa Till number of <strong data-till></strong> and a KSh 1,000 booking deposit. Confirm the current payment instructions with Tamasha before sending money.</p></div></div></div>
+        <div class="faq"><button aria-expanded="false"><span>Are optional activities included in the advertised price?</span><span data-plus>+</span></button><div class="faq-answer"><div><p>No. Optional extras are separated on each trip card so the base price is easier to understand. Check the individual adventure for current charges.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-inner">
+      <div><p class="eyebrow" style="color:#fff">Your next story starts here</p><h2>Tell us where you want to go.</h2><p>Send the idea. Tamasha can help turn it into a real Kenyan adventure.</p></div>
+      <a class="btn" data-wa data-wa-message="Hello Tamasha Adventure & Safaris. I have a trip idea and would like help planning it.">Plan my trip →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo.jpg" alt="Tamasha Adventure & Safaris">
+      <p>Experience Africa, Discover the Wild.</p>
+      <a data-wa data-wa-message="Hello Tamasha Adventure & Safaris. I would like to plan a trip.">WhatsApp the Tamasha team →</a>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">Our story</a>
+      <a href="events.html">Adventures</a>
+      <a href="private.html">Private journeys</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a data-phone href="#"></a>
+      <a href="contact.html">Plan your trip →</a>
+      <a href="https://www.tiktok.com/@tamashaadventures" target="_blank" rel="noopener">@tamashaadventures</a>
+    </div>
+    <div>
+      <h3>Payments</h3>
+      <a href="contact.html">M-Pesa Till <strong data-till></strong></a>
+      <a href="contact.html">Booking deposit: KSh 1,000</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span data-year></span> Tamasha Adventure & Safaris.</span>
+    <span>Kenya • Group adventures • Private journeys</span>
+  </div>
+</footer>
+<a class="mobile-wa" data-wa data-wa-message="Hello Tamasha Adventure & Safaris. I would like to plan a trip. Please share the available options.">WhatsApp Tamasha</a>
+
+<script src="content.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

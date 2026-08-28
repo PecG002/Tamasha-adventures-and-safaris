@@ -1,47 +1,148 @@
-(function(){
-  const stored = localStorage.getItem("tamashaContent");
-  let data = window.TAMASHA_CONTENT;
-  if (stored) { try { data = JSON.parse(stored); } catch(e){} }
 
-  const b = data.business;
-  const phoneDigits = b.phone.replace(/\D/g,"");
-  const waText = encodeURIComponent("Hello Tamasha Adventure & Safaris, I would like to book an upcoming trip. Please share the available seats and booking details.");
-  const wa = "https://wa.me/" + phoneDigits + "?text=" + waText;
+(() => {
+  const D = window.TAMASHA;
+  const phone = D.business.phone.replace(/\D/g, "");
+  const wa = (message) => `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
-  document.getElementById("heroWhatsApp").href = wa;
-  document.getElementById("bookingWhatsApp").href = wa;
-  document.getElementById("ctaWhatsApp").href = wa;
-  document.getElementById("deposit").textContent = b.bookingDeposit;
-  document.getElementById("till").textContent = b.till;
-  document.getElementById("paymentNote").textContent = b.paymentNote;
-  document.getElementById("phoneLink").textContent = b.phone;
-  document.getElementById("phoneLink").href = "tel:" + phoneDigits;
-  document.getElementById("tiktokLink").textContent = "TikTok: " + b.tiktok;
-  document.getElementById("tiktokLink").href = "https://www.tiktok.com/@" + b.tiktok.replace(/^@/,"");
-  document.getElementById("year").textContent = new Date().getFullYear();
+  document.querySelectorAll("[data-wa]").forEach(el => {
+    const custom = el.getAttribute("data-wa-message") ||
+      "Hello Tamasha Adventure & Safaris, I would like to plan a trip. Please share the available options.";
+    el.href = wa(custom);
+  });
 
-  const trips = data.trips || [];
-  if(trips[0]) document.getElementById("heroTrip").textContent = trips[0].title + " — " + trips[0].date;
+  document.querySelectorAll("[data-phone]").forEach(el => {
+    el.textContent = D.business.displayPhone;
+    el.href = `tel:${phone}`;
+  });
 
-  const grid = document.getElementById("tripGrid");
-  grid.innerHTML = trips.map(t => `
-    <article class="trip-card">
+  document.querySelectorAll("[data-till]").forEach(el => el.textContent = D.business.till);
+  document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
+
+  const header = document.querySelector(".site-header");
+  const menu = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav-links");
+
+  const setScrolled = () => header?.classList.toggle("scrolled", window.scrollY > 24);
+  setScrolled();
+  window.addEventListener("scroll", setScrolled, {passive:true});
+
+  menu?.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    document.body.classList.toggle("menu-open");
+    menu.setAttribute("aria-expanded", nav.classList.contains("open"));
+  });
+
+  nav?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    nav.classList.remove("open");
+    document.body.classList.remove("menu-open");
+    menu?.setAttribute("aria-expanded", "false");
+  }));
+
+  const tripCard = (t) => `
+    <article class="trip-card reveal">
       <div class="trip-image">
-        <img src="${t.image}" alt="${t.title}">
-        <div class="trip-date">${t.date}</div>
+        <img src="${t.image}" alt="${t.title}" loading="lazy">
+        <span class="trip-badge">${t.date}</span>
       </div>
       <div class="trip-body">
-        <p class="eyebrow">UPCOMING TRIP</p>
+        <p class="eyebrow">Upcoming adventure</p>
         <h3>${t.title}</h3>
-        <p>${t.intro}</p>
+        <p class="trip-intro">${t.intro}</p>
         <div class="trip-price">${t.price}</div>
-        <div class="trip-cols">
-          <div><h4>Inclusive</h4><ul>${(t.included||[]).map(x=>`<li>${x}</li>`).join("")}</ul></div>
-          <div><h4>Optional extras</h4><ul>${(t.extras||[]).length ? t.extras.map(x=>`<li>${x}</li>`).join("") : "<li>Contact us for trip options.</li>"}</ul></div>
+        <div class="trip-details">
+          <div>
+            <h4>Included</h4>
+            <ul>${t.included.map(x => `<li>${x}</li>`).join("")}</ul>
+          </div>
+          <div>
+            <h4>Optional extras</h4>
+            <ul>${t.extras.length ? t.extras.map(x => `<li>${x}</li>`).join("") : "<li>Ask us about custom options.</li>"}</ul>
+          </div>
         </div>
         <div class="trip-actions">
-          <a class="btn btn-primary" href="${wa}">Book this trip</a>
+          <a class="btn btn-primary" data-wa
+             data-wa-message="Hello Tamasha Adventure & Safaris. I want to book the ${t.title} trip on ${t.date}. Please share availability and booking details.">
+             Book this trip
+          </a>
+          <a class="btn btn-outline-dark" href="contact.html">Ask a question</a>
         </div>
       </div>
-    </article>`).join("");
+    </article>`;
+
+  const tripGrids = document.querySelectorAll("[data-trips]");
+  tripGrids.forEach(grid => {
+    grid.innerHTML = D.trips.map(tripCard).join("");
+  });
+
+  const benefits = document.querySelector("[data-benefits]");
+  if (benefits) {
+    benefits.innerHTML = D.privateBenefits.map(([title, text]) => `
+      <div class="benefit reveal"><b>${title}</b><span>${text}</span></div>
+    `).join("");
+  }
+
+  const upcoming = document.querySelector("[data-next-trip]");
+  if (upcoming) {
+    const t = D.trips[0];
+    upcoming.innerHTML = `
+      <span class="mini">Next adventure</span>
+      <h3>${t.title}</h3>
+      <div class="date">${t.date}</div>
+      <div class="price">${t.price}</div>
+      <a class="btn btn-primary" data-wa
+         data-wa-message="Hello Tamasha Adventure & Safaris. I would like to book the ${t.title} trip on ${t.date}. Please share availability and booking details.">Reserve your place</a>`;
+  }
+
+  document.querySelectorAll(".faq button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq");
+      const open = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open);
+      btn.querySelector("[data-plus]").textContent = open ? "−" : "+";
+    });
+  });
+
+  const form = document.querySelector("#bookingForm");
+  form?.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.querySelector("#name")?.value.trim();
+    const type = document.querySelector("#tripType")?.value;
+    const destination = document.querySelector("#destination")?.value.trim();
+    const dates = document.querySelector("#dates")?.value.trim();
+    const group = document.querySelector("#groupSize")?.value.trim();
+    const message = document.querySelector("#message")?.value.trim();
+
+    const text = `Hello Tamasha Adventure & Safaris.
+
+Name: ${name}
+Trip type: ${type}
+Destination / idea: ${destination}
+Preferred dates: ${dates || "Not specified"}
+Group size: ${group || "Not specified"}
+
+Message:
+${message || "I would like help planning this trip."}`;
+
+    window.location.href = wa(text);
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.08});
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  // Add the dynamic WhatsApp URLs after trip cards are created.
+  document.querySelectorAll("[data-wa]").forEach(el => {
+    if (!el.href || el.getAttribute("href") === location.href) {
+      const custom = el.getAttribute("data-wa-message") ||
+        "Hello Tamasha Adventure & Safaris, I would like to plan a trip. Please share the available options.";
+      el.href = wa(custom);
+    }
+  });
 })();
