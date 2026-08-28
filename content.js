@@ -5,18 +5,27 @@ window.TAMASHA_CONTENT = {
     "phone": "+254743403920",
     "till": "8846784",
     "tiktok": "@tamashaadventures",
+    "email": "hello@tamashaadventures.com",
     "bookingDeposit": "KSh 1,000",
     "paymentNote": "All payments are non-refundable but can be utilised in upcoming trips within a period of one year."
   },
+  "private": {
+    "benefits": [
+      "Choose your destination",
+      "Choose your travel dates",
+      "Build your own itinerary",
+      "Private guide support",
+      "Transport planning",
+      "Local experiences & recommendations"
+    ]
+  },
   "trips": [
     {
-      "id": "olkaria",
       "title": "Olkaria Geothermal Spa & Lake Naivasha",
       "date": "Sunday, 6th September 2026",
       "price": "KSh 2,800",
-      "deposit": "KSh 1,000",
       "image": "assets/olkaria-trip.jpg",
-      "intro": "Unwind, explore and create memories with a full-day adventure around Olkaria, Hell's Gate and Lake Naivasha.",
+      "intro": "Unwind, explore and create memories around Olkaria, Hell's Gate and Lake Naivasha.",
       "included": [
         "Transport from Nairobi",
         "Fish eating",
@@ -33,11 +42,9 @@ window.TAMASHA_CONTENT = {
       ]
     },
     {
-      "id": "thompson",
       "title": "Thompson Falls Trip",
       "date": "6th September 2026",
       "price": "KSh 2,500",
-      "deposit": "KSh 1,000",
       "image": "assets/thompson-falls-trip.jpg",
       "intro": "A refreshing nature escape featuring Thompson Falls, Hippo Point and Kenya Forest.",
       "included": [
