@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tamasha Adventure & Safaris — Experience Africa, Discover the Wild. Group trips, nature adventures and unforgettable Kenyan experiences.">
+  <title>Tamasha Adventure & Safaris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Tamasha home">
+      <img src="assets/logo.jpg" alt="Tamasha Adventure & Safaris logo">
+    </a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#trips">Trips</a>
+      <a href="#about">About</a>
+      <a href="#booking">Booking</a>
+      <a href="#contact">Contact</a>
+      <a class="edit-link" href="edit.html">Edit site</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="eyebrow">ADVENTURE • NATURE • MEMORIES</p>
+    <h1>Experience Africa.<br><span>Discover the Wild.</span></h1>
+    <p class="hero-copy">Escape the ordinary with unforgettable Kenyan adventures, scenic getaways, team-building experiences and group trips.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#trips">Explore Trips</a>
+      <a class="btn btn-light" id="heroWhatsApp" href="#">Book on WhatsApp</a>
+    </div>
+    <div class="hero-note"><strong>Next featured trip:</strong> <span id="heroTrip">Loading…</span></div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="container trust-grid">
+    <div><strong>01</strong><span>Curated Kenyan adventures</span></div>
+    <div><strong>02</strong><span>Group & team experiences</span></div>
+    <div><strong>03</strong><span>Transport from Nairobi</span></div>
+    <div><strong>04</strong><span>Memories worth keeping</span></div>
+  </div>
+</section>
+
+<section id="trips" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">UPCOMING ADVENTURES</p>
+        <h2>Choose your next escape.</h2>
+      </div>
+      <p>From waterfalls and forests to geothermal springs and lake views, there is always somewhere worth exploring.</p>
+    </div>
+    <div id="tripGrid" class="trip-grid"></div>
+  </div>
+</section>
+
+<section id="about" class="section about-section">
+  <div class="container about-grid">
+    <div class="about-image"><img src="assets/olkaria-trip.jpg" alt="Kenyan nature adventure"></div>
+    <div>
+      <p class="eyebrow">ABOUT TAMASHA</p>
+      <h2>Adventure should feel effortless.</h2>
+      <p>Tamasha Adventure & Safaris creates accessible group experiences that bring people closer to nature, new places and each other.</p>
+      <p>We organise day trips, nature escapes, team-building and memorable outdoor experiences, with practical transport and trip planning from Nairobi.</p>
+      <div class="values">
+        <div><b>Explore</b><span>See more of Kenya.</span></div>
+        <div><b>Connect</b><span>Share the journey.</span></div>
+        <div><b>Remember</b><span>Leave with stories.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="section booking-section">
+  <div class="container booking-grid">
+    <div>
+      <p class="eyebrow">HOW TO BOOK</p>
+      <h2>Reserve your seat in three simple steps.</h2>
+      <div class="steps">
+        <div><span>01</span><div><b>Choose a trip</b><p>Pick the destination and date that suits you.</p></div></div>
+        <div><span>02</span><div><b>Pay the deposit</b><p>Booking deposit: <strong id="deposit">KSh 1,000</strong>.</p></div></div>
+        <div><span>03</span><div><b>Confirm your details</b><p>Contact Tamasha and receive your booking confirmation.</p></div></div>
+      </div>
+    </div>
+    <div class="booking-card">
+      <p class="eyebrow">M-PESA</p>
+      <div class="till-number" id="till">8846784</div>
+      <p>Use the Tamasha M-Pesa Till Number to make your booking payment.</p>
+      <a class="btn btn-primary full" id="bookingWhatsApp" href="#">Send booking details</a>
+      <small id="paymentNote"></small>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container cta-inner">
+    <div>
+      <p class="eyebrow">READY TO EXPLORE?</p>
+      <h2>Your next memory is out there.</h2>
+    </div>
+    <a class="btn btn-light" id="ctaWhatsApp" href="#">Talk to Tamasha</a>
+  </div>
+</section>
+</main>
+
+<footer id="contact" class="footer">
+  <div class="container footer-grid">
+    <div>
+      <img class="footer-logo" src="assets/logo.jpg" alt="Tamasha Adventure & Safaris">
+      <p>Experience Africa, Discover the Wild.</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a id="phoneLink" href="#">+254 743 403 920</a>
+      <a id="tiktokLink" href="#">TikTok: @tamashaadventures</a>
+    </div>
+    <div>
+      <h3>Quick links</h3>
+      <a href="#trips">Upcoming trips</a>
+      <a href="#booking">Booking information</a>
+      <a href="edit.html">Edit website</a>
+    </div>
+  </div>
+  <div class="container copyright">© <span id="year"></span> Tamasha Adventure & Safaris. All rights reserved.</div>
+</footer>
+
+<script src="content.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

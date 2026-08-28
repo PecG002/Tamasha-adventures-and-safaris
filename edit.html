@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edit Tamasha Website</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Tamasha"></a><a class="edit-link" href="index.html">View website</a></div></header>
+<main class="container editor">
+<h1>Edit your website</h1>
+<p>Change the fields below, then click <strong>Save on this device</strong>. This editor is designed for a simple static website, because apparently businesses should not require a software engineering degree to change a phone number.</p>
+<div class="notice">Important: the save button stores changes in this browser only. To permanently update the website for everyone, edit <strong>content.js</strong> in the downloaded website package and upload the package again to your hosting service.</div>
+
+<div class="editor-card">
+<h2>Business details</h2>
+<div class="row">
+<div><label>Business name</label><input id="name"></div>
+<div><label>Tagline</label><input id="tagline"></div>
+</div>
+<div class="row">
+<div><label>Phone / WhatsApp</label><input id="phone"></div>
+<div><label>TikTok username</label><input id="tiktok"></div>
+</div>
+<div class="row">
+<div><label>M-Pesa Till Number</label><input id="till"></div>
+<div><label>Booking deposit</label><input id="bookingDeposit"></div>
+</div>
+<label>Payment note</label><textarea id="paymentNote"></textarea>
+</div>
+
+<div id="tripEditors"></div>
+
+<div class="editor-card">
+<h2>Save & export</h2>
+<div class="editor-actions">
+<button class="btn btn-primary" id="save">Save on this device</button>
+<button class="btn" id="export">Download content.js</button>
+<button class="btn" id="reset">Reset to original</button>
+<a class="btn" href="index.html">View website</a>
+</div>
+<p id="status"></p>
+</div>
+</main>
+<script src="content.js"></script>
+<script>
+(function(){
+ let original = window.TAMASHA_CONTENT;
+ let data = JSON.parse(localStorage.getItem("tamashaContent") || JSON.stringify(original));
+
+ const ids = ["name","tagline","phone","tiktok","till","bookingDeposit","paymentNote"];
+ ids.forEach(id => document.getElementById(id).value = data.business[id]);
+
+ const wrap = document.getElementById("tripEditors");
+ function renderTrips(){
+   wrap.innerHTML = "";
+   data.trips.forEach((t,i)=>{
+     const card = document.createElement("div"); card.className="editor-card";
+     card.innerHTML = `<h2>Trip ${i+1}</h2>
+       <div class="row"><div><label>Title</label><input data-k="title"></div><div><label>Date</label><input data-k="date"></div></div>
+       <div class="row"><div><label>Price</label><input data-k="price"></div><div><label>Deposit</label><input data-k="deposit"></div></div>
+       <label>Image path</label><input data-k="image">
+       <label>Short description</label><textarea data-k="intro"></textarea>
+       <label>Inclusive items (one per line)</label><textarea data-k="included"></textarea>
+       <label>Optional extras (one per line)</label><textarea data-k="extras"></textarea>`;
+     wrap.appendChild(card);
+     card.querySelectorAll("[data-k]").forEach(el=>{
+       const k=el.dataset.k;
+       el.value = Array.isArray(t[k]) ? t[k].join("\\n") : (t[k] || "");
+     });
+   });
+ }
+ renderTrips();
+
+ function collect(){
+   ids.forEach(id => data.business[id] = document.getElementById(id).value);
+   [...wrap.children].forEach((card,i)=>{
+     const t=data.trips[i];
+     card.querySelectorAll("[data-k]").forEach(el=>{
+       const k=el.dataset.k;
+       t[k] = ["included","extras"].includes(k) ? el.value.split("\\n").map(x=>x.trim()).filter(Boolean) : el.value;
+     });
+   });
+   return data;
+ }
+ document.getElementById("save").onclick=()=>{
+   collect();
+   localStorage.setItem("tamashaContent", JSON.stringify(data));
+   document.getElementById("status").textContent="Saved on this device. Open the website to preview your changes.";
+ };
+ document.getElementById("export").onclick=()=>{
+   collect();
+   const text="window.TAMASHA_CONTENT = "+JSON.stringify(data,null,2)+";\\n";
+   const blob=new Blob([text],{type:"application/javascript"});
+   const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="content.js"; a.click();
+ };
+ document.getElementById("reset").onclick=()=>{
+   localStorage.removeItem("tamashaContent");
+   location.reload();
+ };
+})();
+</script>
+</body>
+</html>
