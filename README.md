@@ -28,3 +28,8 @@ The five service cards use externally hosted Unsplash images so the page works i
 The Facebook URL follows the handle supplied by the client. If the real Facebook page uses a different URL, change only that link in the footer and `services.html`.
 
 No fake reviews, awards, certifications or customer numbers were added.
+
+## Latest refinements
+- Social icons reduced to a more restrained 34px footprint with 16px SVG marks.
+- Service enquiry buttons no longer stretch across the card; service cards use a flex layout so actions stay anchored at the bottom and cannot visually climb into the next card.
+- Team Building now uses a real outdoor team-building image featuring Black adults playing an outdoor game, sourced from Pexels: https://www.pexels.com/photo/group-of-people-playing-outdoor-game-7551430/

@@ -283,20 +283,20 @@ button{cursor:pointer}
 .services-intro p{color:var(--muted);font-size:17px;max-width:680px}
 
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.service-card{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+.service-card{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease;display:flex;flex-direction:column;height:100%}
 .service-card:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(15,35,22,.16)}
 .service-media{height:285px;position:relative;overflow:hidden;background:var(--forest)}
 .service-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .service-card:hover .service-media img{transform:scale(1.05)}
 .service-number{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.92);color:var(--forest);border-radius:999px;padding:8px 11px;font:800 10px "Manrope";letter-spacing:1.5px}
-.service-body{padding:26px}
+.service-body{padding:26px;display:flex;flex-direction:column;flex:1}
 .service-body h3{font:600 31px/1.03 "Playfair Display",serif;letter-spacing:-.03em;margin:0 0 10px}
 .service-body p{color:var(--muted);font-size:14px;margin:0 0 22px}
 .service-list{display:grid;gap:8px;margin:0 0 24px;padding:0;list-style:none}
 .service-list li{font-size:13px;color:var(--ink);display:flex;gap:9px;align-items:flex-start}
 .service-list li::before{content:"✓";color:var(--orange);font-weight:800}
-.service-action{display:flex;gap:10px}
-.service-action .btn{flex:1}
+.service-action{display:flex;gap:10px;margin-top:auto;padding-top:8px}
+.service-action .btn{flex:0 0 auto;width:auto;min-height:44px;padding:0 20px;font-size:13px;letter-spacing:.2px}
 
 .services-note{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:stretch}
 .services-note-main{background:var(--forest);color:#fff;border-radius:28px;padding:52px}
@@ -308,10 +308,10 @@ button{cursor:pointer}
 .services-note-side div{padding:15px 0;border-bottom:1px solid var(--line);font-weight:700}
 .services-note-side div:last-child{border-bottom:0}
 
-.footer-social{display:flex;gap:10px;margin:20px 0 8px}
-.social-icon{display:inline-flex!important;width:42px;height:42px!important;margin:0!important;border:1px solid rgba(255,255,255,.15);border-radius:50%;align-items:center;justify-content:center;color:#fff!important;background:rgba(255,255,255,.04);transition:transform .2s,background .2s,border-color .2s}
+.footer-social{display:flex;gap:8px;margin:18px 0 8px}
+.social-icon{display:inline-flex!important;width:34px;height:34px!important;margin:0!important;border:1px solid rgba(255,255,255,.15);border-radius:50%;align-items:center;justify-content:center;color:#fff!important;background:rgba(255,255,255,.04);transition:transform .2s,background .2s,border-color .2s}
 .social-icon:hover{transform:translateY(-3px);background:var(--orange);border-color:var(--orange)}
-.social-icon svg{width:20px;height:20px}
+.social-icon svg{width:16px;height:16px}
 .social-handle{font:700 11px "Manrope";letter-spacing:1px;color:#77837a}
 
 @media(max-width:980px){
