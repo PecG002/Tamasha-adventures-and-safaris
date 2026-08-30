@@ -1,14 +1,30 @@
-# Tamasha Adventure & Safaris — Premium GitHub Pages refresh
+# Tamasha Services + Social Footer Update
 
-## Deploy
-1. Keep the existing `assets/` folder from the current repository beside these files.
-2. Replace `index.html`, `about.html`, `events.html`, `private.html`, `contact.html`, `style.css`, `script.js`, and `content.js`.
-3. Push to the `main` branch and let GitHub Pages redeploy.
+This is a drop-in update for the existing Tamasha Adventure & Safaris GitHub Pages site.
+
+## Added
+- `services.html` — a full Services page for:
+  1. Car hire
+  2. Sound hire
+  3. Event planning & management
+  4. Team building
+  5. Hotel booking
+- Service navigation link added to every page.
+- Social icons added to the footer of every page.
+- Social links:
+  - Instagram: https://www.instagram.com/tamashaadventures/
+  - TikTok: https://www.tiktok.com/@tamashaadventures
+  - Facebook: https://www.facebook.com/tamashaadventures/
+  - WhatsApp: https://wa.me/254743403920
+- Responsive service cards and footer social styling added to `style.css`.
+
+## Deployment
+Replace the HTML/CSS/JS files in your existing repository with the files in this package.
+KEEP your existing `assets/` folder because the current site logo and trip imagery are stored there.
+
+The five service cards use externally hosted Unsplash images so the page works immediately. For the strongest client-facing version, replace those five image URLs with real Tamasha photography stored in `assets/services/`.
 
 ## Important
-The current repository references `assets/hero-kenya.jpg`, but the public `assets` directory currently lists `hero-waterfall.jpg`, `hero-waterfalll.jpg`, `logo.jpg`, `olkaria-trip.jpg`, and `thompson-falls-trip.jpg`. This version deliberately uses the existing images so the deployment does not depend on a missing hero file.
+The Facebook URL follows the handle supplied by the client. If the real Facebook page uses a different URL, change only that link in the footer and `services.html`.
 
-For the final client delivery, replace the current trip/hero images with licensed, original Tamasha photography. The layout is designed so better photography immediately makes the site feel more premium.
-
-## Business data
-Edit `content.js` to change the phone, M-Pesa Till, deposit, trips, prices, dates and inclusions. No framework or build step is required.
+No fake reviews, awards, certifications or customer numbers were added.
